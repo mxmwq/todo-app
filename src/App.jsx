@@ -1,39 +1,34 @@
 import { useState } from "react"
 import Header from "./assets/components/Header"
-import InputTodo from "./assets/components/InputTodo"
-import TaskTodo from "./assets/components/TaskTodo";
+import CreateTodoItem from "./assets/components/CreateTodoItem"
+import TodoList from "./assets/components/TodoList";
 
 function App() {
-  const [todo, setTodo] = useState('');
-  const [tasks, setTasks] = useState([]);
+  const [todo, setTodo] = useState("");
+  const [todos, setTodos] = useState([]);
 
-  const addTask = () => {
-    const todoItem = {
-      id: Math.random(),
-      value: todo,
-      isDone: false,
+  const addTodo = () => {
+    if(todo !== "") {
+      setTodos([...todos, todo]);
+      setTodo("");
     }
-
-    let newTasks = [todoItem, ...tasks]
-    setTasks(newTasks);
   }
 
-  const deleteTask = () => {
-
+  const deleteTodo = (text) => {
+    const newTodos = todos.filter((todo) => {
+      return todo !== text;
+    })
+    setTodos(newTodos);
   }
-
-  const changeCheckboxState = () => {
-    
-  }
-
-  const taskTodoList = tasks.map((e) => <TaskTodo id ={e.id} value={e.value}/>)
+  
+  console.log(todos)
 
   return (
     <>
       <div>
         <Header />
-        <InputTodo addTask={addTask} todo={todo} setTodo={setTodo}/>
-        {taskTodoList}
+        <CreateTodoItem todo={todo} setTodo={setTodo} addTodo={addTodo}/>
+        <TodoList todos={todos} deleteTodo={deleteTodo}/>
       </div>
     </>
   )

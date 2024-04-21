@@ -1,10 +1,11 @@
 import React from 'react'
 import TodoItem from './TodoItem'
+import style from '../module/todoList.module.css'
 
 const TodoList = ({todos, deleteTodo}) => {
   return (
-    <>
-        {todos?.length > 0 ? (
+    <div className={style.todoList}>
+      {todos?.length > 0 ? (
           <ul>
             {todos.map((todo, id) => 
               <TodoItem todo={todo} id={id} deleteTodo={deleteTodo}/>
@@ -15,7 +16,7 @@ const TodoList = ({todos, deleteTodo}) => {
             <p>No task found</p>
           </div>
         )}
-    </>
+    </div>
   )
 }
 

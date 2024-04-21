@@ -1,8 +1,9 @@
 import React from 'react'
+import style from '../module/todoItem.module.css'
 
 const TodoItem = ({todo, id, deleteTodo}) => {
   return (
-    <div className="todo">
+    <div className={style.todo}>
       <li key={id}>{todo}</li>
       <button onClick={() => {deleteTodo(todo)}}>del</button>
     </div>

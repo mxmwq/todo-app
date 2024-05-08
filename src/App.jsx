@@ -8,7 +8,7 @@ function App() {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
 
-  const addTodo = () => {
+  const createTodo = () => {
     if(todo !== "") {
       setTodos([...todos, todo]);
       setTodo("");
@@ -28,7 +28,7 @@ function App() {
     <>
       <div className={style.wrapper}>
         <Header />
-        <CreateTodoItem todo={todo} setTodo={setTodo} addTodo={addTodo}/>
+        <CreateTodoItem todo={todo} setTodo={setTodo} createTodo={createTodo}/>
         <TodoList todos={todos} deleteTodo={deleteTodo}/>
       </div>
     </>
